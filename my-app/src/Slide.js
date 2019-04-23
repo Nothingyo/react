@@ -1,27 +1,23 @@
-import React, { Component } from "react";
+import React, {
+	Component
+} from "react";
 import './Slide.css';
-const images = [
-	{
-		url:require('./picture/1.jpg') ,
-		name: "挑战第一次，不试你怎么知道？"
-	},
-	{
-		url:require('./picture/2.jpg') ,
-		name: "疑案追声"
-	},
-	{
-		url: require('./picture/3.jpg') ,
-		name: "考研冲鸭！"
-	},
-	{
-		url: require('./picture/4.jpg') ,
-		name: "舞蹈"
-	},
-	{
-		url: require('./picture/5.jpg') ,
-		name: "爱是孤独的开始"
-	}
-];
+const images = [{
+	url: require('./picture/1.jpg'),
+	name: "挑战第一次，不试你怎么知道？"
+}, {
+	url: require('./picture/2.jpg'),
+	name: "疑案追声"
+}, {
+	url: require('./picture/3.jpg'),
+	name: "考研冲鸭！"
+}, {
+	url: require('./picture/4.jpg'),
+	name: "舞蹈"
+}, {
+	url: require('./picture/5.jpg'),
+	name: "爱是孤独的开始"
+}];
 
 
 class Slide extends Component {
@@ -34,76 +30,88 @@ class Slide extends Component {
 		);
 	}
 }
-
+var timer = null;
 class Slide1 extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentIndex: 0,
-			time: null
+			currentIndex: 0
 		};
 	}
 
-	showTime(){
-		this.state.time= setInterval(() => {
+
+	showTime() {
+		timer = setInterval(() => {
 			//console.log("curr is "+this.state.currentIndex);
-			this.state.currentIndex += 1;
-			if (this.state.currentIndex >= this.props.items.length) {
-				this.state.currentIndex = 0;
+			let currentIndex = this.state.currentIndex
+			currentIndex += 1;
+			if (currentIndex >= this.props.items.length) {
+				currentIndex = 0;
 			}
-			this.setState({currentIndex:this.state.currentIndex});
+			this.setState({
+				currentIndex: currentIndex
+			});
 		}, 3000);
 
 	}
-
-	setOnmouseEvent1() {
-        let more = document.querySelector('.more');
-        console.log(more);
-        clearInterval(this.state.time);
-        more.style.display = 'inline-block';
-    }
-
-    setOnmouseEvent2(){
-    	let more = document.querySelector('.more');
-        this.showTime();
-        console.log(this);
-        more.style.display = 'none';
-    }
-
-
-	
-	componentDidMount() {
+	indexChange = (i) => {
+		//console.log(this.index);
+		this.setState({
+			currentIndex: i
+		});
+		clearInterval(timer);
 		this.showTime();
-		console.log(this.state.time);
-		}
-	
+	}
+	componentWillMount() {
+		this.showTime();
+		//console.log(timer);
+	}
+	componentWillUnmount() {
+		clearInterval(timer);
+	}
 
 	render() {
-		
+		let currentIndex = this.state.currentIndex;
+		console.log(currentIndex);
 		return (
+
 			<div id="slide1">
-				<Picture items={this.props.items} currentIndex={this.state.currentIndex} onMouseOver={() => this.setOnmouseEvent1()} onMouseOut={()=>this.setOnmouseEvent2()} />
-				<Trig />
+			{
+				this.props.items.map((e,index)=>{
+				return index === currentIndex ? <Picture e={e} onMouseOver={() => clearInterval(timer)} onMouseOut={()=>this.showTime()} /> : null
+				})
+			}
+				<ul className="trig">
+				<Trig  onClick={()=>{this.indexChange(0)}} currentIndex={currentIndex} className={currentIndex===0?'on':'hide'} />
+				<Trig  onClick={()=>{this.indexChange(1)}} currentIndex={currentIndex} className={currentIndex===1?'on':'hide'} />
+				<Trig  onClick={()=>{this.indexChange(2)}} currentIndex={currentIndex} className={currentIndex===2?'on':'hide'} />
+				<Trig  onClick={()=>{this.indexChange(3)}} currentIndex={currentIndex} className={currentIndex===3?'on':'hide'} />
+				<Trig  onClick={()=>{this.indexChange(4)}} currentIndex={currentIndex} className={currentIndex===4?'on':'hide'} />
+				</ul>
 			</div>
 		);
 	}
+
 }
 
 class Picture extends Component {
-	constructor(props){
-		super(props);
-	}
+
 
 	render() {
+		const {
+			e
+		} = this.props
 		return (
 			<ul
 				className="picture"
 				onMouseOver={() => this.props.onMouseOver()}
+					onMouseOut={()=>this.props.onMouseOut()}
 			>
 				<li>
-					<a href="#"><img src={this.props.items[this.props.currentIndex].url}></img>></a>
-					<a href="#" className="title">{this.props.items[this.props.currentIndex].name}</a>
-					<a href="#" className="more">更多></a>
+					<a href="#"><img src={e.url}></img>></a>
+					<a href="#" className="title">{e.name}</a>
+					<a href="#" className="more" >更多></a>
 				</li>
 			</ul>
 		);
@@ -112,9 +120,12 @@ class Picture extends Component {
 
 
 class Trig extends Component {
+	constructor(props) {
+		super(props)
+	}
 
 	render() {
-		return null;
+		return (<span className ={this.props.className} onClick = {() => {this.props.onClick()}} > </span>);
 	}
 }
 

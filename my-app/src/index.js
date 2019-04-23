@@ -6,5 +6,4 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<All />, document.getElementById('all'));
 
-
 serviceWorker.unregister();

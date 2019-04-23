@@ -39,3 +39,12 @@
         width: 25px;
         height: 25px;
     }
+    .hide {
+        background: url('picture/trig0.png');
+    }
+    .hide:hover {
+        background: url('picture/trig1.png');
+    }
+    .on {
+        background: url('picture/trig2.png');
+    }
