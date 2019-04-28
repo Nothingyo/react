@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import logo from './logo.svg';
 import './All.css';
 import Slide from './Slide';
 import Animate from './Animate';
+import Sider from './Sider';
 
 class All extends Component {
   render() {
@@ -14,7 +17,8 @@ class All extends Component {
           <Animate/>
         </div>
         <div id="footer"></div>
-        <div id="sider"></div>
+        <Sider/>
+        
       </div>
     );
   }

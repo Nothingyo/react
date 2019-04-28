@@ -13,3 +13,58 @@
 			lineHeight: 24,
 			color: # fff;
 		}
+
+
+		<Trig  onClick={()=>{this.indexChange(0)}} currentIndex={currentIndex} className={currentIndex===0?'on':'hide'} /> <
+		Trig onClick = {
+			() => {
+				this.indexChange(1)
+			}
+		}
+		currentIndex = {
+			currentIndex
+		}
+		className = {
+			currentIndex === 1 ? 'on' : 'hide'
+		}
+		/> <
+		Trig onClick = {
+			() => {
+				this.indexChange(2)
+			}
+		}
+		currentIndex = {
+			currentIndex
+		}
+		className = {
+			currentIndex === 2 ? 'on' : 'hide'
+		}
+		/> <
+		Trig onClick = {
+			() => {
+				this.indexChange(3)
+			}
+		}
+		currentIndex = {
+			currentIndex
+		}
+		className = {
+			currentIndex === 3 ? 'on' : 'hide'
+		}
+		/> <
+		Trig onClick = {
+			() => {
+				this.indexChange(4)
+			}
+		}
+		currentIndex = {
+			currentIndex
+		}
+		className = {
+			currentIndex === 4 ? 'on' : 'hide'
+		}
+		/>
+
+
+
+		}

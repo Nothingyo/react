@@ -33,13 +33,13 @@ class Slide extends Component {
 	}
 }
 let timer = null;
-let isnone = 'none';
 class Slide1 extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentIndex: 0
+			currentIndex: 0,
+			moreStyle: true,
 		};
 	}
 
@@ -78,10 +78,11 @@ class Slide1 extends Component {
 		let statement = [];
 		for (let i = 0; i < 5; i++) {
 			statement.push(<Trig  
-						onClick={()=>{this.indexChange(i)}} 
-						currentIndex={currentIndex} 
-						className={currentIndex===i?'on':'hide'} 
-						key={'Trig'+i}/>);
+							onClick={()=>{this.indexChange(i)}} 
+							currentIndex={currentIndex} 
+							className={currentIndex===i?'on':'hide'} 
+							key={'Trig'+i}
+						   />);
 		}
 		return (
 			<div id="slide1">
@@ -89,10 +90,11 @@ class Slide1 extends Component {
 				this.props.items.map((e,index)=>{
 				return index === currentIndex ? 
 				<Picture e={e} 
-				onMouseOver={() => {clearInterval(timer);}} 
-				onMouseOut={()=>{this.showTime();} } 
-				key={'Picture'+index}/>
-				: null
+				  onMouseOver={() => {clearInterval(timer);this.setState({moreStyle:false})}} 
+				  onMouseOut={()=>{this.showTime();this.setState({moreStyle:true})}} 
+				  moreStyle={this.state.moreStyle}
+				  key={'Picture'+index}
+				/>: null
 			})
 	}
 	<ul className="trig">{statement}</ul> 
@@ -103,8 +105,9 @@ class Slide1 extends Component {
 }
 
 class Picture extends Component {
-
-
+	constructor(props) {
+		super(props);
+	}
 	render() {
 		const {
 			e
@@ -113,12 +116,12 @@ class Picture extends Component {
 			<ul
 				className="picture"
 				onMouseOver={() => this.props.onMouseOver()}
-					onMouseOut={()=>this.props.onMouseOut()}
+				onMouseOut={()=>this.props.onMouseOut()}
 			>
 				<li>
 					<a href="#"><img src={e.url}></img>></a>
 					<a href="#" className="title">{e.name}</a>
-					<a href="#" className="more" >更多></a>
+					<a href="#" className={this.props.moreStyle?"more":"moreHover"} >更多></a>
 				</li>
 			</ul>
 		);
@@ -134,8 +137,8 @@ class Trig extends Component {
 	render() {
 		return (
 			<span 
-			className ={this.props.className} 
-			onClick = {() => {this.props.onClick()}} 
+			  className ={this.props.className} 
+			  onClick = {() => {this.props.onClick()}} 
 			> 
 			</span>);
 	}

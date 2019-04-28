@@ -1,0 +1,11 @@
+
+    #sider div {
+        color: #000;
+        cursor: pointer;
+        height: 28px;
+        line-height: 26px;
+    }
+    #sider .sider_item:hover {
+        background-color: #1E90FF;
+        color: #fff;
+    }

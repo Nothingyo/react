@@ -32,7 +32,11 @@ class Slide2 extends Component {
 	render() {
 		let slide2_images = [];
 		slide2_Images.map((e, index) => {
-			slide2_images.push(<Slide2_images e={e} key={'Slide2_images'+index}/>);
+			slide2_images.push(
+				<Slide2_images 
+				  e={e} 
+				  key={'Slide2_images'+index}
+				/>);
 		})
 		return (
 			<div id="slide2">
@@ -56,15 +60,19 @@ class Slide2_images extends Component {
 		const {
 			e
 		} = this.props;
-		return (<div className="slide2_images" 
-				onMouseOver={()=>{this.setState({onMouse:true})}} 
-				onMouseOut={()=>{this.setState({onMouse:false})}}
+		return (<div 
+				  className="slide2_images" 
+				  onMouseOver={()=>{this.setState({onMouse:true})}} 
+				  onMouseOut={()=>{this.setState({onMouse:false})}}
 				>
 					<a href="#"  ><img src={e.url}></img></a>
 					<div className={this.state.onMouse?'slide2_show':'slide2_hide'}>
 						<a href="#">{e.name}</a>
 						<a href="#" title="稍后再看">
-							<img className="slide2_clock" src={require('./picture/slide2_clock.png')}></img>
+							<img 
+							  className="slide2_clock" 
+							  src={require('./picture/slide2_clock.png')}
+							></img>
 						</a>
 					</div>
 				</div>);
