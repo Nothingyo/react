@@ -1,0 +1,147 @@
+#animate {
+    margin: 15px;
+    width: 980px;
+    height: 420px;
+    .animate_left {
+        width: 720px;
+        height: 263px;
+        float: left;
+        position: relative;
+    }
+    .animate_right {
+        width: 260px;
+        height: 263px;
+        float: right;
+    }
+    .animate_headline {
+        width: 700px;
+        height: 45px;
+        position: absolute;
+        top: 0px;
+    }
+}
+.inlineBlock {
+    display: inline-block;
+    color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+}
+.hover {
+
+    cursor: pointer;
+    color: #0099FF;
+}
+.headline_picture {
+    .inlineBlock;
+    width: 40px;
+    height: 40px;
+    background-image: url('picture/slide2_clock.png');
+}
+.animate_tab {
+    .inlineBlock;
+    width: 128px;
+    height: 24px;
+    .animate_tab_item {
+        .inlineBlock;
+        &:hover {
+            .hover;
+        }
+    }
+    .animate_tab_itemon {
+        .inlineBlock;
+        border-bottom-color: #0099FF;
+        border-bottom-style: solid;
+        color: #0099FF;
+        &:hover {
+            .hover;
+        }
+    }
+}
+.animate_content {
+    width: 700px;
+    height: 220px;
+    position: absolute;
+    top: 45px;
+    margin-top: 10px;
+    &>div {
+        .inlineBlock2;
+    }
+}
+.animate_headline {
+    a {
+        .inlineBlock;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .animate_headline_more,
+    .animate_headline_numberhop {
+        .inlineBlock;
+        float: right;
+        margin-right: 10px;
+        border-radius: 4px;
+        border: solid #B8B8B8;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+}
+.inlineBlock2 {
+    display: inline-block;
+    width: 160px;
+    height: 130px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.animate_content_item {
+    .inlineBlock2;
+    div,
+    a,
+    img {
+        width: 160px;
+        height: 100px;
+        border-radius: 4px;
+    }
+}
+.animate_content_item_show {
+    text-align: center;
+    transform: translateY(-110px);
+    background-color: rgba(0, 0, 0, .64);
+    padding-top: 12px;
+}
+.animate_content_item_hide {
+    .animate_clock;
+    transform: translateY(-20px);
+}
+.animate_content_images {
+    position: relative;
+}
+
+.PlayAndDanmarku-hide {
+    transform: translateY(20px);
+    position: absolute;
+    top: 116px;
+    z-index: 4;
+    width: 160px;
+    height: 20px;
+    background-color: #fff;
+}
+.PlayAndDanmarku {
+    position: absolute;
+    top: 116px;
+    z-index: 4;
+    width: 160px;
+    height: 20px;
+    background-color: #fff;
+    img {
+        height: 15px;
+        width: 15px;
+        float: left;
+    }
+}
+.animate_clock {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 25px;
+    height: 25px;
+}

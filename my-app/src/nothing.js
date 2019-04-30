@@ -68,3 +68,20 @@
 
 
 		}
+
+
+
+		this.state = {
+			onmouse: false,
+		}
+		this.state.onmouse ? "animate_content_item_show" : "animate_content_item"
+		onMouseOver = {
+			this.setState({
+				onmouse: true
+			})
+		}
+		onMouseOut = {
+			this.setState({
+				onmouse: false
+			})
+		}
