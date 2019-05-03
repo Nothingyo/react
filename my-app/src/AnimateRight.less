@@ -1,0 +1,96 @@
+.animate_right {
+    width: 260px;
+    height: 400px;
+}
+.basic {
+    float: left;
+    text-align: center;
+    line-height: 55px;
+    color: #000;
+}
+.rank-head {
+    height: 45px;
+    width: 260px;
+    h3 {
+        .basic;
+        width: 36px;
+        height: 30px;
+    }
+}
+.rank-tabon,
+.rank-taboff {
+    .basic;
+    display: inline-block;
+    margin: 0px 10px;
+    height: 38px;
+    cursor: pointer;
+    &:hover{
+        color:#0099FF;
+    }
+}
+.rank-tabon {
+    color:#0099FF;
+    border-bottom-style: solid;
+    border-bottom-color: #0099FF;
+}
+.rank-tab {
+    float: left;
+    left: 36px;
+    height: 45px;
+}
+.select-date {
+    float: right;
+    right: 10px;
+    margin-top: 10px;
+    border: solid #B8B8B8;
+    width: 57px;
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 20px;
+    color: #000;
+}
+.rank-item {
+    position: relative;
+    height: 18px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.rank-item-first {
+    position: relative;
+    height: 50px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.rank-number {
+    position: absolute;
+    height: 18px;
+    line-height: 18px;
+    left: 0px;
+    background-color: #b8c0cc;
+    padding: 0px 3px;
+    text-align: center;
+    border-radius: 4px;
+}
+.rank-number-first,
+.rank-number-red {
+    .rank-number;
+    background-color: #f25d8e;
+}
+.rank-item-illustration {
+    position: absolute;
+    left: 20px;
+    width: 240px;
+    color: #000;
+    cursor: pointer;
+    span {
+        top: 0px;
+        float: left;
+        color: #000;
+    }
+    img {
+        width: 65px;
+        height: 50px;
+        border-radius: 4px;
+    }
+}
